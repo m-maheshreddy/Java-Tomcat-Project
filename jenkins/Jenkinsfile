@@ -19,7 +19,7 @@ pipeline {
     agent any
 	
 	 tools { 
-        maven "Maven" 
+        maven "maven_3.5.4" 
 		// tool name: 'maven_3.5.4', type: 'maven'
 		// tool name: 'JDK_8', type: 'jdk'
         //jdk 'jdk_8' 
