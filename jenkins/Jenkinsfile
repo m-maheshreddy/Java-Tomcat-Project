@@ -4,7 +4,7 @@ def getProjectName() {
 }
 
 def getJDKVersion() {
-    return 'jdk1.8.0_101'
+    return 'jdk1.8.0_25'
 }
 
 def getMavenConfig() {
@@ -27,8 +27,10 @@ pipeline {
 	 stage('Maven Install') {
             steps {
                 script {
+		 withMaven(globalMavenSettingsConfig: "$mavenConfig", jdk: "$JDKVersion", maven: "$mavenLocation") {	
                  bat 'mvn clean install'
                   }
+		}
 	      }
 	  }   
 		
