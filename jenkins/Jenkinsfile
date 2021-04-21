@@ -20,7 +20,7 @@ pipeline {
 	
 	 tools { 
         maven "maven_3.5.4" 
-	java "jdk_8"
+	//java "jdk_8"
 		// tool name: 'maven_3.5.4', type: 'maven'
 		// tool name: 'JDK_8', type: 'jdk'
         //jdk 'jdk_8' 
