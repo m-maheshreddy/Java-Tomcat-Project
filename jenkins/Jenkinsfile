@@ -41,7 +41,8 @@ pipeline {
 	    stage('Maven Deploy') {
             steps {
                 script {
-                 bat 'copy C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\java-tomcat-pipeline\webapp\target\webapp.war C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\'
+                // bat 'copy C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\java-tomcat-pipeline\webapp\target\webapp.war C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\'
+		 bat 'copy C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\java-tomcat-pipeline\\webapp\\target\\webapp.war C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\'	
 		}
 	      }
 	  } 
