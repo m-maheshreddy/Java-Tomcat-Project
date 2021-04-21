@@ -1,6 +1,6 @@
 
 def getProjectName() {
-    return 'JenkinsPipeline'
+    return 'Java-Tomcat-Project'
 }
 
 def getJDKVersion() {
@@ -30,7 +30,7 @@ pipeline {
             }
         }
 	    
-	 stage('Maven Install') {
+	 stage('Build') {
             steps {
                 script {
                  bat 'mvn clean install'
@@ -38,11 +38,18 @@ pipeline {
 	      }
 	  }   
 	    
-	    stage('Maven Deploy') {
+	 stage('Test') {
             steps {
                 script {
-                // bat 'copy C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\java-tomcat-pipeline\webapp\target\webapp.war C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\'
-		 bat 'copy "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\java-tomcat-pipeline\\webapp\\target\\webapp.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\"'	
+                 bat 'mvn test'
+		}
+	      }
+	  }   
+	    
+	    stage('Tomcat Deploy') {
+            steps {
+                script {
+                 bat 'copy "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\java-tomcat-pipeline\\webapp\\target\\webapp.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\"'	
 		}
 	      }
 	  } 
