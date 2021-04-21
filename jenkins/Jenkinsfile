@@ -1,3 +1,20 @@
+
+def getProjectName() {
+    return 'JenkinsPipeline'
+}
+
+def getJDKVersion() {
+    return 'jdk1.8.0_101'
+}
+
+def getMavenConfig() {
+    return 'maven-config'
+}
+
+def getMavenLocation() {
+    return 'M2_HOME'
+}
+
 pipeline {
     agent any
     stages {
@@ -6,7 +23,15 @@ pipeline {
                 git branch: 'master', url: "https://github.com/m-maheshreddy/Java-Tomcat-Project.git"
             }
         }
+	    
+	 stage('Maven Install') {
+            steps {
+                script {
+                 bat 'mvn clean install'
+                  }
+	      }
+	  }   
 		
 	}
-	
+
 }
