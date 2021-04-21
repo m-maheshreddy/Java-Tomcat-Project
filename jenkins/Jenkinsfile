@@ -21,10 +21,6 @@ pipeline {
 	 tools { 
         maven "maven_3.5.4" 
 	jdk "JDK_8"	 
-	//java "jdk_8"
-		// tool name: 'maven_3.5.4', type: 'maven'
-		// tool name: 'JDK_8', type: 'jdk'
-        //jdk 'jdk_8' 
         }
 	
     stages {
@@ -37,12 +33,18 @@ pipeline {
 	 stage('Maven Install') {
             steps {
                 script {
-		// withMaven(globalMavenSettingsConfig: "$mavenConfig", jdk: "$JDKVersion", maven: "$mavenLocation") {	
                  bat 'mvn clean install'
-               //   }
 		}
 	      }
 	  }   
+	    
+	    stage('Maven Deploy') {
+            steps {
+                script {
+                 bat 'copy C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\java-tomcat-pipeline\webapp\target\webapp.war C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps\'
+		}
+	      }
+	  } 
 		
 	}
 
