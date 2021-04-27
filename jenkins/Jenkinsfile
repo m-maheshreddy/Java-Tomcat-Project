@@ -23,6 +23,12 @@ pipeline {
 	jdk "JDK_8"	 
         }
 	
+	environment {
+
+    PATH = "C:\\WINDOWS\\SYSTEM32"
+
+     }
+	
     stages {
         stage ('Clone') {
             steps {
